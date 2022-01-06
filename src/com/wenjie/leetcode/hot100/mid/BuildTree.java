@@ -3,7 +3,7 @@ package com.wenjie.leetcode.hot100.mid;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.wenjie.leetcode.hot100.common.TreeNode;
+import com.wenjie.leetcode.common.TreeNode;
 
 /**
  * Description:  105. 从前序与中序遍历序列构造二叉树

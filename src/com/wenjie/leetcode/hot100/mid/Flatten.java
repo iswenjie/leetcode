@@ -3,7 +3,7 @@ package com.wenjie.leetcode.hot100.mid;
 import java.util.ArrayDeque;
 import java.util.Queue;
 
-import com.wenjie.leetcode.hot100.common.TreeNode;
+import com.wenjie.leetcode.common.TreeNode;
 
 /**
  * Description:  114. 二叉树展开为链表

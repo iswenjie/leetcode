@@ -1,4 +1,4 @@
-package com.wenjie.leetcode.hot100.common;
+package com.wenjie.leetcode.common;
 
 /**
  * Description:  TreeNode

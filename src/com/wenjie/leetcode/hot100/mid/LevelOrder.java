@@ -1,6 +1,6 @@
 package com.wenjie.leetcode.hot100.mid;
 
-import com.wenjie.leetcode.hot100.common.TreeNode;
+import com.wenjie.leetcode.common.TreeNode;
 
 import java.util.ArrayList;
 import java.util.List;
