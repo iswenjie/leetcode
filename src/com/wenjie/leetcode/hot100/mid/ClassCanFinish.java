@@ -61,7 +61,7 @@ public class ClassCanFinish {
                 }
             }
         }
-        // 没有任何条件下完课(list 为空)，标记！
+        // 走到这步说明course也能完课，标记！
         visited[course] = 2;
         return true;
     }
