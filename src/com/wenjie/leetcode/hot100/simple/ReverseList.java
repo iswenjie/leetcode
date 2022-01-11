@@ -18,7 +18,7 @@ public class ReverseList {
     }
 
     /**
-     * 一次遍历
+     * 一次遍历 最快
      * @param head 原链表
      * @return
      */
