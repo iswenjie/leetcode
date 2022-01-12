@@ -4,6 +4,7 @@ package com.wenjie.leetcode.hot100.mid;
  * Description:  215. 数组中的第K个最大元素
  * tag: 排序
  * Created on 2022/1/12 10:09
+ *
  * @author iswenjie.lu
  */
 public class FindKthLargest {
@@ -12,25 +13,41 @@ public class FindKthLargest {
     public static void main(String[] args) {
         FindKthLargest v = new FindKthLargest();
 
-        int[] arr = {7, 6, 5, 4, 3, 2, 1};
+        int[] arr = {3, 2, 1, 5, 6, 4};
         v.findKthLargest(arr, 2);
     }
 
     public int findKthLargest(int[] nums, int k) {
-        int i = quickSelect(nums, 0, nums.length - 1, k);
+        quickSortBest(nums, 0, nums.length - 1, k);
         return nums[nums.length - k];
     }
 
+    private int quickSelect(int[] nums, int l, int r, int k) {
+        if (l == r) return nums[l];
+        int i = l - 1, j = r + 1, g = nums[(l + r) >> 1];
+        while (i < j) {
+            while (nums[--j] < g) ;
+            while (nums[++i] > g) ;
+            if (i < j) {
+                int t = nums[i];
+                nums[i] = nums[j];
+                nums[j] = t;
+            }
+        }
+        int count = j - l + 1;
+        if (k <= count) return quickSelect(nums, l, j, k);
+        return quickSelect(nums, j + 1, r, k - count);
+    }
+
     /**
-     * 快速选择
-     * 在快熟排序中判断第k大在哪个区间，丢弃另外一半区间继续往下
+     * 快速部分排序 只排K在的那一部分
      * @param nums
      * @param start
      * @param end
      */
-    private int quickSelect(int[] nums, int start, int end, int k) {
-        if (start == end) {
-            return nums[start];
+    private void quickSortBest(int[] nums, int start, int end, int k) {
+        if (start >= end) {
+            return;
         }
         int left = start, right = end;
         int val = nums[start];
@@ -47,20 +64,18 @@ public class FindKthLargest {
                 right--;
             }
         }
-        int rightCount = end - left + 1;
-        if (rightCount >= k) {
-            // k在右边=
-            return quickSelect(nums, left, end, k);
+        int rightSize = end - left + 1;
+        if (rightSize >= k) {
+            quickSortBest(nums, left, end, k);
         } else {
-            // k在左边
-            k = k - rightCount;
-            return quickSelect(nums, start, right, k);
+            quickSortBest(nums, start, right, k - rightSize);
         }
     }
 
 
     /**
      * 归并排序
+     *
      * @param nums
      * @param start
      * @param end
@@ -95,6 +110,7 @@ public class FindKthLargest {
 
     /**
      * 快速排序
+     *
      * @param nums
      * @param start
      * @param end
