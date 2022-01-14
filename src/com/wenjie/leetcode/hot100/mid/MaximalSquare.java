@@ -46,12 +46,12 @@ public class MaximalSquare {
         rows = matrix.length;
         columns = matrix[0].length;
         int ans = 0;
-        int limit = 0;
-        for (int i = 0; i < rows - limit; i++) {
-            for (int j = 0; j < columns - limit; j++) {
+        int maxSide = 0;
+        for (int i = 0; i < rows - maxSide; i++) {
+            for (int j = 0; j < columns - maxSide; j++) {
                 if (matrix[i][j] == '1') {
                     ans = Math.max(maximalSquare(matrix, i, j), ans);
-                    limit = (int) Math.sqrt(ans);
+                    maxSide = (int) Math.sqrt(ans);
                 }
             }
         }
